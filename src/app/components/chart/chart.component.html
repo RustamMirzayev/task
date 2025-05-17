@@ -1,0 +1,127 @@
+<div class="p-[59px]">
+  <div class="flex flex-col xl:flex-row gap-[20px]">
+    <div
+      class="w-full xl:w-1/2 h-[426px] p-[14px] rounded-[18px] shadow-lg bg-[#FFFFFF]"
+    >
+      <div class="flex items-center gap-[16px]">
+        <span
+          class="w-[46px] h-[42px] flex justify-center items-center rounded-[14px] bg-[#2563EB]"
+          ><svg
+            width="18"
+            height="19"
+            viewBox="0 0 18 19"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.25 6.1C2.25 4.83988 2.25 4.20982 2.49524 3.72852C2.71095 3.30516 3.05516 2.96095 3.47852 2.74524C3.95982 2.5 4.58988 2.5 5.85 2.5H12.15C13.4101 2.5 14.0402 2.5 14.5215 2.74524C14.9448 2.96095 15.289 3.30516 15.5048 3.72852C15.75 4.20982 15.75 4.83988 15.75 6.1V12.4C15.75 13.6601 15.75 14.2902 15.5048 14.7715C15.289 15.1948 14.9448 15.539 14.5215 15.7548C14.0402 16 13.4101 16 12.15 16H5.85C4.58988 16 3.95982 16 3.47852 15.7548C3.05516 15.539 2.71095 15.1948 2.49524 14.7715C2.25 14.2902 2.25 13.6601 2.25 12.4V6.1Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.75 7.375L4.5 11.5H13.5L10.125 5.875L8.25 8.5L6.75 7.375Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span class="font-medium text-[16px] leading-[100%] align-middle"
+          >Статистика по полу</span
+        >
+      </div>
+      <div class="flex items-center justify-center gap-[16px]">
+        <div echarts [options]="option" class="h-[200px] w-full"></div>
+      </div>
+    </div>
+    <div
+      class="w-full xl:w-1/2 shadow-lg bg-[#FFFFFF] h-[426px] p-[20px] rounded-[18px]"
+    >
+      <div class="flex items-center gap-[16px]">
+        <span
+          class="w-[46px] h-[42px] flex justify-center items-center rounded-[14px] bg-[#2563EB]"
+          ><svg
+            width="18"
+            height="19"
+            viewBox="0 0 18 19"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.25 6.1C2.25 4.83988 2.25 4.20982 2.49524 3.72852C2.71095 3.30516 3.05516 2.96095 3.47852 2.74524C3.95982 2.5 4.58988 2.5 5.85 2.5H12.15C13.4101 2.5 14.0402 2.5 14.5215 2.74524C14.9448 2.96095 15.289 3.30516 15.5048 3.72852C15.75 4.20982 15.75 4.83988 15.75 6.1V12.4C15.75 13.6601 15.75 14.2902 15.5048 14.7715C15.289 15.1948 14.9448 15.539 14.5215 15.7548C14.0402 16 13.4101 16 12.15 16H5.85C4.58988 16 3.95982 16 3.47852 15.7548C3.05516 15.539 2.71095 15.1948 2.49524 14.7715C2.25 14.2902 2.25 13.6601 2.25 12.4V6.1Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.75 7.375L4.5 11.5H13.5L10.125 5.875L8.25 8.5L6.75 7.375Z"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span class="font-medium text-[16px] leading-[100%] align-middle"
+          >Статистика по возрасту</span
+        >
+      </div>
+      <app-vozrast [data1]="data1" [data2]="data2"></app-vozrast>
+    </div>
+  </div>
+
+  <div
+    class="w-full max-w-[1800px] mx-auto p-[17px] bg-white rounded-xl shadow-lg overflow-x-auto mt-[57px]"
+  >
+    <app-avtive-periot></app-avtive-periot>
+  </div>
+
+  <div class="flex flex-col xl:flex-row gap-[20px] mt-[38px]">
+    <div class="w-full xl:w-1/2 h-64 p-[20px]">
+      <div>
+        <div>
+          <div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow">
+            <div class="flex justify-between items-center mb-6">
+              <h2
+                class="font-semibold text-[14px] leading-[100%] tracking-normal font-sans text-[#2D3649]"
+              >
+                Kурсы по популярности
+              </h2>
+              <span
+                class="font-bold text-[14px] leading-[100%] tracking-normal font-sans text-[#2D3649]"
+                >TOP-5</span
+              >
+            </div>
+            <app-kurs-top-option></app-kurs-top-option>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full xl:w-1/2 h-64 p-[20px]">
+      <div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow">
+        <div class="flex justify-between items-center mb-6">
+          <h2
+            class="font-semibold text-[14px] leading-[100%] tracking-normal font-sans text[#2D3649]"
+          >
+            Курсы по успеваемости
+          </h2>
+          <span
+            class="font-bold text-[14px] leading-[100%] tracking-normal font-sans text-[#2D3649]"
+            >TOP-5</span
+          >
+        </div>
+        <app-kurs-option></app-kurs-option>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="max-w-[4200px] mx-auto px-4 py-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mt-[300px]"
+  >
+    <app-cards *ngFor="let item of cardsData" [card]="item"></app-cards>
+  </div>
+</div>
