@@ -4,7 +4,12 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export default class ChartService {
+
+
+//  Active Period
+
   getVozrastData() {
     return {
       data1: [2000, 3000, 4900, 2500],
@@ -32,7 +37,7 @@ export default class ChartService {
 
   getDaysData(): Observable<{ xData: string[]; yData: number[]; max: number }> {
     return of({
-      xData: Array.from({ length: 30 }, (_, i) => `Kun ${i + 1}`),
+      xData: Array.from({ length: 30 }, (_, i) => `${i + 1}`),
       yData: Array.from({ length: 30 }, () => Math.floor(Math.random() * 2000)),
       max: 2000,
     });
@@ -64,6 +69,9 @@ export default class ChartService {
       max: 8000,
     });
   }
+
+
+  // Kurs statistikasi
 
   getKursOption() {
     return {
@@ -192,6 +200,9 @@ export default class ChartService {
       ],
     };
   }
+
+
+  // Cards
 
   getCardsData() {
     return [
