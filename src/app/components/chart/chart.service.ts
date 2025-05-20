@@ -72,7 +72,7 @@ export default class ChartService {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: isMobile ? '-10%' : '3%',
+        left: isMobile ? '-15%' : '3%',
         right: isMobile ? '5%' : '5%',
         bottom: '5%',
         containLabel: true,
@@ -146,7 +146,7 @@ export default class ChartService {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: isMobile ? '-10%' : '3%',
+        left: isMobile ? '-15%' : '3%',
         right: isMobile ? '5%' : '5%',
         bottom: '5%',
         containLabel: true,
