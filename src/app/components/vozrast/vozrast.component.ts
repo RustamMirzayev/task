@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { NgxEchartsDirective } from 'ngx-echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @Component({
   standalone: true,
   selector: 'app-vozrast',
-  imports: [NgxEchartsDirective],
+  imports: [NgxEchartsModule],
   templateUrl: './vozrast.component.html',
   styleUrl: './vozrast.component.scss',
 })
