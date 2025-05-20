@@ -4,14 +4,22 @@ import { NgxEchartsDirective } from 'ngx-echarts';
 import VozrastComponent from '../vozrast/vozrast.component';
 import ChartService from './chart.service';
 import AvtivePeriotComponent from '../avtive-periot/avtive-periot.component';
-import KursOptionComponent from "../kurs-option/kurs-option.component";
-import KursTopOptionComponent from "../kurs-top-option/kurs-top-option.component";
-import CardsComponent from "../cards/cards.component";
+import KursOptionComponent from '../kurs-option/kurs-option.component';
+import KursTopOptionComponent from '../kurs-top-option/kurs-top-option.component';
+import CardsComponent from '../cards/cards.component';
 
 @Component({
   standalone: true,
   selector: 'app-chart',
-  imports: [NgxEchartsDirective, CommonModule, VozrastComponent, AvtivePeriotComponent, KursOptionComponent, KursTopOptionComponent, CardsComponent],
+  imports: [
+    NgxEchartsDirective,
+    CommonModule,
+    VozrastComponent,
+    AvtivePeriotComponent,
+    KursOptionComponent,
+    KursTopOptionComponent,
+    CardsComponent,
+  ],
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
 })
@@ -55,15 +63,17 @@ export default class ChartComponent {
       return name;
     };
   };
+
+   width =  window.innerWidth < 768;
   option = {
     tooltip: {
       trigger: 'item',
       formatter: '{b}: {c} ({d}%)',
     },
     legend: {
-      top: 'middle',
+      top: this.width ? '1%' : '40%',
       right: '10%',
-      orient: 'vertical',
+     orient: this.width? 'horizontal' : 'vertical',
       formatter: this.legendFormatter(this.data, this.total),
       textStyle: {
         fontFamily: 'SF Pro Display',
@@ -83,6 +93,28 @@ export default class ChartComponent {
           show: true,
           position: 'center',
           formatter: `${this.total}\nУмумий сони`,
+          rich: {
+          a: {
+            fontFamily: 'SF Pro Display',
+            fontWeight: 600,
+            fontSize: 14,
+            lineHeight: 14,
+            letterSpacing: 0,
+            color: '#000',
+            align: 'center',
+            verticalAlign: 'middle',
+          },
+          b: {
+            fontFamily: 'SF Pro Display',
+            fontWeight: 600,
+            fontSize: 14,
+            lineHeight: 14,
+            letterSpacing: 0,
+            color: '#666',
+            align: 'center',
+            verticalAlign: 'middle',
+          },
+        },
         },
         emphasis: {
           label: {
@@ -125,5 +157,4 @@ export default class ChartComponent {
       num: '82,6 %',
     },
   ];
-
 }
