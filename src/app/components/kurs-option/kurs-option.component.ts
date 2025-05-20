@@ -8,10 +8,10 @@ import { ECharts } from 'echarts';
   selector: 'app-kurs-option',
   imports: [NgxEchartsModule],
   templateUrl: './kurs-option.component.html',
-  styleUrl: './kurs-option.component.scss',
+  styleUrls: ['./kurs-option.component.scss'],
 })
 export default class KursOptionComponent implements AfterViewInit {
-   kursOption: any;
+  kursOption: any;
   echartsInstance: ECharts | null = null;
 
   @ViewChild(NgxEchartsDirective, { static: false }) chartDirective!: NgxEchartsDirective;

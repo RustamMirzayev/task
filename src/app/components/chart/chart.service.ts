@@ -5,9 +5,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export default class ChartService {
-
   //  Active Period
-  
   getVozrastData() {
     return {
       data1: [2000, 3000, 4900, 2500],
@@ -74,9 +72,9 @@ export default class ChartService {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: isMobile ? '8%' : '3%',
-        right: isMobile ? '10%' : '5%',
-        bottom: '3%',
+        left: isMobile ? '5%' : '3%',
+        right: isMobile ? '5%' : '5%',
+        bottom: '5%',
         containLabel: true,
       },
       xAxis: {
@@ -103,7 +101,7 @@ export default class ChartService {
         axisLabel: {
           show: true,
           fontSize: isMobile ? 10 : 13,
-          lineHeight: isMobile ? 14 : 16,
+          lineHeight: isMobile ? 30 : 9,
           formatter: (value: string) => {
             if (isMobile) {
               return value.length > 20 ? value.slice(0, 17) + '...' : value;
@@ -116,6 +114,9 @@ export default class ChartService {
             }
           },
           overflow: 'truncate',
+          verticalAlign: isMobile ? 'bottom' : 'center',
+          align: isMobile ? 'top' : 'right',
+          padding: [0, 0, 0, 10],
         },
       },
       series: [
@@ -129,10 +130,10 @@ export default class ChartService {
           },
           label: {
             show: true,
-            position: isMobile ? 'right' : 'insideRight',
+            position: 'insideRight',
             formatter: (params: any) => `${params.value} %`,
             fontSize: isMobile ? 10 : 12,
-            color: isMobile ? '#000' : '#fff',
+            color: '#fff',
           },
           data: [20.3, 62.6, 79.1, 86.7, 95.6],
         },
@@ -145,9 +146,9 @@ export default class ChartService {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: isMobile ? '8%' : '3%',
-        right: isMobile ? '10%' : '5%',
-        bottom: '3%',
+        left: isMobile ? '5%' : '3%',
+        right: isMobile ? '5%' : '5%',
+        bottom: '5%',
         containLabel: true,
       },
       xAxis: {
@@ -174,10 +175,10 @@ export default class ChartService {
         axisLabel: {
           show: true,
           fontSize: isMobile ? 10 : 13,
-          lineHeight: isMobile ? 14 : 16,
+          lineHeight: isMobile ? 30 : 9,
           formatter: (value: string) => {
             if (isMobile) {
-              return value.length > 20 ? value.slice(0, 17) + '...' : value;
+                return value.length > 20 ? value.slice(0, 17) + '...' : value;
             } else {
               const words = value.split(' ');
               if (words.length <= 3) return value;
@@ -187,6 +188,9 @@ export default class ChartService {
             }
           },
           overflow: 'truncate',
+          verticalAlign: isMobile ? 'bottom' : 'center',
+          align: isMobile ? 'top' : 'right',
+          padding: [0, 0, 0, 10],
         },
       },
       series: [
@@ -200,10 +204,10 @@ export default class ChartService {
           },
           label: {
             show: true,
-            position: isMobile ? 'right' : 'insideRight',
+            position: 'insideRight',
             formatter: (params: any) => `${params.value}`,
             fontSize: isMobile ? 10 : 12,
-            color: isMobile ? '#000' : '#fff',
+            color: '#fff',
           },
           data: [3546, 3546, 7981, 9568, 12356],
         },
