@@ -72,7 +72,7 @@ export default class ChartService {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: isMobile ? '-15%' : '3%',
+       left: isMobile ? '-34%' : '3%',
         right: isMobile ? '5%' : '5%',
         bottom: '5%',
         containLabel: true,
@@ -104,7 +104,7 @@ export default class ChartService {
           lineHeight: isMobile ? 30 : 9,
           formatter: (value: string) => {
             if (isMobile) {
-              return value.length > 20 ? value.slice(0, 17) + '...' : value;
+              return value;
             } else {
               const words = value.split(' ');
               if (words.length <= 3) return value;
@@ -146,7 +146,7 @@ export default class ChartService {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: isMobile ? '-15%' : '3%',
+        left: isMobile ? '-34%' : '3%',
         right: isMobile ? '5%' : '5%',
         bottom: '5%',
         containLabel: true,
@@ -178,7 +178,7 @@ export default class ChartService {
           lineHeight: isMobile ? 30 : 9,
           formatter: (value: string) => {
             if (isMobile) {
-                return value.length > 20 ? value.slice(0, 17) + '...' : value;
+                return value;
             } else {
               const words = value.split(' ');
               if (words.length <= 3) return value;
