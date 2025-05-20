@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import ChartService from '../chart/chart.service';
 import { NgClass } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -13,13 +13,21 @@ import { NgxEchartsModule } from 'ngx-echarts';
 export default class AvtivePeriotComponent implements OnInit {
   activePeriodOption: any;
   currentPeriod: 'months' | 'days' | 'hours' = 'hours';
+
   constructor(private chartDataService: ChartService) {}
 
   ngOnInit(): void {
     this.setChartOption(this.currentPeriod);
   }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.setChartOption(this.currentPeriod);
+  }
+
   setChartOption(period: 'months' | 'days' | 'hours') {
     this.currentPeriod = period;
+    const isMobile = window.innerWidth < 768;
 
     let data$;
     if (period === 'hours') {
@@ -45,7 +53,7 @@ export default class AvtivePeriotComponent implements OnInit {
         xAxis: {
           type: 'category',
           data: xData,
-          axisLabel: { fontSize: 12, color: '#333' },
+          axisLabel: { fontSize: isMobile ? 10 : 12, color: '#333' },
           axisTick: { show: false },
           axisLine: { show: false },
           splitLine: { show: false },
@@ -54,13 +62,14 @@ export default class AvtivePeriotComponent implements OnInit {
           type: 'value',
           min: 0,
           max: max,
-          axisLabel: { fontSize: 12, color: '#333' },
+          axisLabel: { fontSize: isMobile ? 10 : 12, color: '#333' },
         },
         series: [
           {
             data: yData,
             type: 'bar',
-            barWidth: 16,
+            barWidth: isMobile ? 8 : 16,
+            barGap: isMobile ? '40%' : '10%',
             showBackground: true,
             backgroundStyle: { color: 'rgba(180, 180, 180, 0.2)' },
             itemStyle: { borderRadius: [4, 4, 4, 4], color: '#0EA5E9' },
