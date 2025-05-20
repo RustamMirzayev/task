@@ -1,6 +1,6 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
-import { NgxEchartsDirective } from 'ngx-echarts';
+import { Component, HostListener } from '@angular/core';
+import { NgxEchartsModule } from 'ngx-echarts';
 import VozrastComponent from '../vozrast/vozrast.component';
 import ChartService from './chart.service';
 import AvtivePeriotComponent from '../avtive-periot/avtive-periot.component';
@@ -12,7 +12,7 @@ import CardsComponent from '../cards/cards.component';
   standalone: true,
   selector: 'app-chart',
   imports: [
-    NgxEchartsDirective,
+    NgxEchartsModule,
     CommonModule,
     VozrastComponent,
     AvtivePeriotComponent,
@@ -33,6 +33,7 @@ export default class ChartComponent {
     const data = this.chartService.getVozrastData();
     this.data1 = data.data1;
     this.data2 = data.data2;
+    this.setChartOptions();
   }
   data = [
     {
@@ -63,73 +64,72 @@ export default class ChartComponent {
       return name;
     };
   };
-
-   width =  window.innerWidth < 768;
-  option = {
-    tooltip: {
-      trigger: 'item',
-      formatter: '{b}: {c} ({d}%)',
-    },
-    legend: {
-      top: this.width ? '1%' : '40%',
-      right: '10%',
-     orient: this.width? 'horizontal' : 'vertical',
-      formatter: this.legendFormatter(this.data, this.total),
-      textStyle: {
-        fontFamily: 'SF Pro Display',
-        fontWeight: 600,
-        fontSize: 14,
-        lineHeight: 14,
-        letterSpacing: 0,
+  width = window.innerWidth < 768;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width = event.target.innerWidth < 768;
+    this.setChartOptions();
+  }
+  option: any;
+  setChartOptions() {
+    this.option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c} ({d}%)',
       },
-    },
-    series: [
-      {
-        type: 'pie',
-        radius: ['60%', '70%'],
-        center: ['40%', '50%'],
-        avoidLabelOverlap: false,
-        label: {
-          show: true,
-          position: 'center',
-          formatter: `${this.total}\nУмумий сони`,
-          rich: {
-          a: {
-            fontFamily: 'SF Pro Display',
-            fontWeight: 600,
-            fontSize: 14,
-            lineHeight: 14,
-            letterSpacing: 0,
-            color: '#000',
-            align: 'center',
-            verticalAlign: 'middle',
-          },
-          b: {
-            fontFamily: 'SF Pro Display',
-            fontWeight: 600,
-            fontSize: 14,
-            lineHeight: 14,
-            letterSpacing: 0,
-            color: '#666',
-            align: 'center',
-            verticalAlign: 'middle',
-          },
+      legend: {
+        top: this.width ? '-2%' : '40%',
+        right: window.innerWidth >= 1280 ? '10%' : '18%',
+        orient: this.width ? 'horizontal' : 'vertical',
+        formatter: this.legendFormatter(this.data, this.total),
+        textStyle: {
+          fontFamily: 'SF Pro Display',
+          fontWeight: 600,
+          fontSize: 14,
+          lineHeight: 14,
+          letterSpacing: 0,
         },
-        },
-        emphasis: {
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: ['60%', '70%'],
+          center: ['40%', this.width ? '60%' : '40%'],
+          avoidLabelOverlap: false,
           label: {
-            show: false,
-            fontSize: 40,
-            fontWeight: 'bold',
+            show: true,
+            position: 'center',
+            formatter: `${this.total}\nУмумий сони`,
+            rich: {
+              value: {
+                fontFamily: 'SF Pro Display',
+                fontWeight: 800,
+                fontSize: 16,
+                lineHeight: 16,
+                letterSpacing: 0,
+                color: '#0f172a',
+                align: 'center',
+                verticalAlign: 'middle',
+              },
+              label: {
+                fontFamily: 'SF Pro Display',
+                fontWeight: 600,
+                fontSize: 12,
+                lineHeight: 16,
+                color: '#64748b',
+                align: 'center',
+                verticalAlign: 'middle',
+              },
+            },
           },
+          labelLine: {
+            show: false,
+          },
+          data: this.data,
         },
-        labelLine: {
-          show: false,
-        },
-        data: this.data,
-      },
-    ],
-  };
+      ],
+    };
+  }
 
   cardsData = [
     {

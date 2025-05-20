@@ -4,12 +4,10 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-
 export default class ChartService {
 
-
-//  Active Period
-
+  //  Active Period
+  
   getVozrastData() {
     return {
       data1: [2000, 3000, 4900, 2500],
@@ -70,16 +68,14 @@ export default class ChartService {
     });
   }
 
-
   // Kurs statistikasi
-
-  getKursOption() {
+  getKursOption(isMobile: boolean) {
     return {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: '3%',
-        right: '5%',
+        left: isMobile ? '8%' : '3%',
+        right: isMobile ? '10%' : '5%',
         bottom: '3%',
         containLabel: true,
       },
@@ -106,18 +102,25 @@ export default class ChartService {
         splitLine: { show: false },
         axisLabel: {
           show: true,
+          fontSize: isMobile ? 10 : 13,
+          lineHeight: isMobile ? 14 : 16,
           formatter: (value: string) => {
-            const words = value.split(' ');
-            if (words.length <= 3) return value;
-            return (
-              words.slice(0, 3).join(' ') + '\n' + words.slice(3).join(' ')
-            );
+            if (isMobile) {
+              return value.length > 20 ? value.slice(0, 17) + '...' : value;
+            } else {
+              const words = value.split(' ');
+              if (words.length <= 3) return value;
+              return (
+                words.slice(0, 3).join(' ') + '\n' + words.slice(3).join(' ')
+              );
+            }
           },
+          overflow: 'truncate',
         },
       },
       series: [
         {
-          name: '2011',
+          name: 'Foiz',
           type: 'bar',
           barWidth: '50%',
           itemStyle: {
@@ -126,10 +129,10 @@ export default class ChartService {
           },
           label: {
             show: true,
-            position: 'insideRight',
+            position: isMobile ? 'right' : 'insideRight',
             formatter: (params: any) => `${params.value} %`,
-            fontSize: 12,
-            color: '#fff',
+            fontSize: isMobile ? 10 : 12,
+            color: isMobile ? '#000' : '#fff',
           },
           data: [20.3, 62.6, 79.1, 86.7, 95.6],
         },
@@ -137,13 +140,13 @@ export default class ChartService {
     };
   }
 
-  getKursTopOption() {
+  getKursTopOption(isMobile: boolean) {
     return {
       tooltip: { show: false },
       legend: { show: false },
       grid: {
-        left: '3%',
-        right: '5%',
+        left: isMobile ? '8%' : '3%',
+        right: isMobile ? '10%' : '5%',
         bottom: '3%',
         containLabel: true,
       },
@@ -170,18 +173,25 @@ export default class ChartService {
         splitLine: { show: false },
         axisLabel: {
           show: true,
+          fontSize: isMobile ? 10 : 13,
+          lineHeight: isMobile ? 14 : 16,
           formatter: (value: string) => {
-            const words = value.split(' ');
-            if (words.length <= 3) return value;
-            return (
-              words.slice(0, 3).join(' ') + '\n' + words.slice(3).join(' ')
-            );
+            if (isMobile) {
+              return value.length > 20 ? value.slice(0, 17) + '...' : value;
+            } else {
+              const words = value.split(' ');
+              if (words.length <= 3) return value;
+              return (
+                words.slice(0, 3).join(' ') + '\n' + words.slice(3).join(' ')
+              );
+            }
           },
+          overflow: 'truncate',
         },
       },
       series: [
         {
-          name: '2011',
+          name: 'Kurslar',
           type: 'bar',
           barWidth: '50%',
           itemStyle: {
@@ -190,17 +200,16 @@ export default class ChartService {
           },
           label: {
             show: true,
-            position: 'insideRight',
+            position: isMobile ? 'right' : 'insideRight',
             formatter: (params: any) => `${params.value}`,
-            fontSize: 12,
-            color: '#fff',
+            fontSize: isMobile ? 10 : 12,
+            color: isMobile ? '#000' : '#fff',
           },
           data: [3546, 3546, 7981, 9568, 12356],
         },
       ],
     };
   }
-
 
   // Cards
 
