@@ -5,6 +5,6 @@ import * as echarts from 'echarts';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideEchartsCore({ echarts }) // 👈 MUHIM QATOR
+    provideEchartsCore({ echarts })
   ]
 });
